@@ -75,15 +75,16 @@ def count_area(dict):
 
 areas_hurr_freq = count_area(hurricane_dict)
 #print(areas_hurr_freq)
-print(areas_hurr_freq.values())
+#print(areas_hurr_freq.values())
 
 
 # write your find most affected area function here:
 
 def max_count(dict):
-    most_hit_area = {}
-    for num in dict.values():
-        if num > most_hit_area.values():
+    most_hit_area = {'': 0}
+    for i in dict.keys():
+        value = dict[i]
+        if value > int(list(most_hit_area)[0]):
             most_hit_area = dict.item()
     return most_hit_area
 
