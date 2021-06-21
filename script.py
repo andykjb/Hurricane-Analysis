@@ -26,7 +26,7 @@ damages_cleaned = []
 def clean_damages(list):
     for item in list:
         if item == 'Damages not recorded':
-            damages_cleaned.append(item)
+            damages_cleaned.append(0)
         elif 'M' in item:
             damages_cleaned.append(float(item.strip('M'))*1000000)
         elif 'B' in item:
@@ -118,15 +118,44 @@ def mortality_rating(names_list, death_list):
             mortality_rating_dict[5].append(names_list[i])
     return mortality_rating_dict
 
-print(mortality_rating(names,deaths))
+#print(mortality_rating(names,deaths))
 
 
 # write your greatest damage function here:
+def max_damage(names_list, damage_list):
+    most_damage = max(damage_list)
+    name = names_list[damage_list.index(most_damage)]
+    return name, most_damage
 
-
-
+print(max_damage(names,damages_cleaned))
 
 
 
 
 # write your catgeorize by damage function here:
+
+def damage_ratings(names_list, damages_list):
+    damage_scale = {0: 0,
+                1: 100000000,
+                2: 1000000000,
+                3: 10000000000,
+                4: 50000000000}
+    ratings_dict = {0: [], 1: [], 2: [], 3: [], 4: [], 5: []}
+    for i in range(len(names_list)):
+        if damages_list[i] == damage_scale[0]:
+            ratings_dict[0].append(names_list[i])
+        elif damages_list[i] <= damage_scale[1]:
+            ratings_dict[1].append(names_list[i])
+        elif damages_list[i] <= damage_scale[2]:
+            ratings_dict[2].append(names_list[i])
+        elif damages_list[i] <= damage_scale[3]:
+            ratings_dict[3].append(names_list[i])
+        elif damages_list[i] <= damage_scale[4]:
+            ratings_dict[4].append(names_list[i])
+        elif damages_list[i] > damage_scale[4]:
+            ratings_dict[5].append(names_list[i])
+    return ratings_dict
+
+print(damage_ratings(names, damages_cleaned))
+
+
