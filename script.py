@@ -101,11 +101,24 @@ def most_deaths(names_list, deaths_list):
 
 
 # write your catgeorize by mortality function here:
+def mortality_rating(names_list, death_list):
+    mortality_rating_dict = {0: [], 1: [], 2: [], 3: [], 4: [], 5: []}
+    for i in range(len(names_list)):
+        if death_list[i] == 0:
+            mortality_rating_dict[0].append(names_list[i])
+        elif death_list[i] <= 100:
+            mortality_rating_dict[1].append(names_list[i])
+        elif death_list[i] <= 500:
+            mortality_rating_dict[2].append(names_list[i])
+        elif death_list[i] <= 1000:
+            mortality_rating_dict[3].append(names_list[i])
+        elif death_list[i] <= 10000:
+            mortality_rating_dict[4].append(names_list[i])
+        elif death_list[i] > 10000:
+            mortality_rating_dict[5].append(names_list[i])
+    return mortality_rating_dict
 
-
-
-
-
+print(mortality_rating(names,deaths))
 
 
 # write your greatest damage function here:
