@@ -81,21 +81,22 @@ areas_hurr_freq = count_area(hurricane_dict)
 # write your find most affected area function here:
 
 def max_count(dict):
-    return max(dict.values())
+    value = max(dict.values())
+    area = list(dict.keys())[list(dict.values()).index(value)]
+    return {area: value}
 
-print(list(areas_hurr_freq.key())[list(areas_hurr_freq.values()).index(9)]
-
-#print(list(mydict.keys())[list(mydict.values()).index(16)])  # Prints george
-
+#print(max_count(areas_hurr_freq))
 
 
 
 
 # write your greatest number of deaths function here:
+def most_deaths(names_list, deaths_list):
+    max_death = max(deaths_list)
+    name = names_list[deaths_list.index(max_death)]
+    return name, max_death
 
-
-
-
+#print(most_deaths(names,deaths))
 
 
 
